@@ -82,11 +82,13 @@ e - Inserte los elementos del arreglo old_buckets en el mapa (use la función in
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
-  //long old_s = map->size;
   long old_c = map->capacity;
   Pair** old_a = map->buckets;
 
   map->capacity = map->capacity * 2;
+  map->size = 0;
+  Pair ** new_a = (Pair**) malloc(sizeof(Pair*) * map->capacity);
+  
   for(int i = 0; i < old_c; i++)
     {
       insertMap(map, old_a[i]->key, old_a[i]->value);
