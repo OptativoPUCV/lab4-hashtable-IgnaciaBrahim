@@ -51,7 +51,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
       {
         //Si la posición es válida nunca se va a ejecutar el while xd
-        pos = (pos + 1) % map->capacity
+        pos = (pos + 1) % map->capacity;
         //el % a capacity hace que nunca me salga de los valores del mapa
         //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
       }
