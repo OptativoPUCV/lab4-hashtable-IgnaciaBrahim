@@ -280,3 +280,14 @@ Thu 25 Apr 2024 02:43:31 AM UTC:
  tests:  13|2
 total_score: 50/70
 61eebd2
+Thu 25 Apr 2024 02:45:55 AM UTC: 
+ hashmap.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:162:8: error: unused variable ‘copia_i’ [-Werror=unused-variable]
+  162 |   long copia_i = map->current; //  pos inicial
+      |        ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+53aad83
