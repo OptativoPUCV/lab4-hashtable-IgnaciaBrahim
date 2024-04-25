@@ -48,10 +48,16 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value) {
     if(map==NULL || key==NULL) return;
     long pos = hash(key, map->capacity);
+    long copia_i = pos;
     while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
       {
         //Si la posición es válida nunca se va a ejecutar el while xd
         pos = (pos + 1) % map->capacity;
+        if (pos == copia_i)
+        {
+          return;
+        }
+        
         //el % a capacity hace que nunca me salga de los valores del mapa
         //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
       }
@@ -87,6 +93,7 @@ HashMap * createMap(long capacity) {
 void eraseMap(HashMap * map,  char * key) {    
   if(map==NULL || key==NULL) return;
   long pos = hash(key, map->capacity);
+  long copia_i = pos;
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
     {
       if(is_equal(map->buckets[pos]->key, key))
@@ -95,9 +102,11 @@ void eraseMap(HashMap * map,  char * key) {
         map->size--;
       }
       pos = (pos) + 1 % map->capacity;
+      if (pos == copia_i)
+      {
+        return;
+      }
     }
-  return;
-
 }
 
 //================================================
