@@ -160,12 +160,14 @@ Pair * firstMap(HashMap * map) {
 
 Pair * nextMap(HashMap * map) {
   long pos = (map->current + 1) % map->capacity;
-  for (long i = map->current; i < map->capacity; i++,pos++) {
-    if (map->buckets[pos])
-      if (map->buckets[pos]->key) {
+  for (long i = map->current; i < map->capacity; i++)
+  {
+    if (map->buckets[pos] != NULL && map->buckets[pos] != NULL)
+    {
         map->current = pos;
         return map->buckets[pos];
-      }
+    }
+    pos++;
   }
   return NULL;
 }
