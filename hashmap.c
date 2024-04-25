@@ -159,12 +159,12 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  if(map==NULL || map->current == -1 || map->size == 0 ) 
+  if(map==NULL || map->current == -1) 
   {
     return NULL;
   }
-  map->current = ((map->current) + 1) % map->capacity;
   long copia_i = map->current;
+  map->current = ((map->current) + 1) % map->capacity;
   while(map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
     {
       map->current = ((map->current) + 1) % map->capacity;
