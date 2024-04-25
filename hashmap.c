@@ -159,7 +159,7 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  if(map==NULL || map->current == -1 || map->capacity == 0 ) 
+  if(map==NULL || map->current == -1 || map->size == 0 ) 
   {
     return NULL;
   }
