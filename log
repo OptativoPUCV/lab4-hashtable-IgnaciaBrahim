@@ -394,3 +394,8 @@ hashmap.c:90:11: error: unused variable ‘new_a’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 1c716a8
+Thu 25 Apr 2024 03:28:28 AM UTC: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+ tests:  0|0
+daebdf3
