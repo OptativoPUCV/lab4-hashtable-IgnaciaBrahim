@@ -38,11 +38,24 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
+//================================================
+//2.- Implemente la función void insertMap(HashMap * map, char * key, void * value). Esta función inserta un nuevo dato (key,value) en el mapa y actualiza el índice current a esa posición. Recuerde que para insertar un par (clave,valor) debe:
+
+//a - Aplicar la función hash a la clave para obtener la posición donde debería insertar el nuevo par
+
+//b - Si la casilla se encuentra ocupada, avance hasta una casilla disponible (método de resolución de colisiones). Una casilla disponible es una casilla nula, pero también una que tenga un par inválido (key==NULL).
 
 void insertMap(HashMap * map, char * key, void * value) {
     if(map==NULL || key==NULL) return;
-    
-
+    long pos = hash(key, map->capacity);
+    while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
+      {
+        //Si la posición es válida nunca se va a ejecutar el while xd
+        pos = (pos + 1) % map->capacity
+        //el % a capacity hace que nunca me salga de los valores del mapa
+        //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
+      }
+    map->buckets[pos] = createPair(key, value);
 }
 
 void enlarge(HashMap * map) {
@@ -51,9 +64,10 @@ void enlarge(HashMap * map) {
 
 }
 
+//================================================
+//1.- Implemente la función createMap en el archivo hashmap.c. Esta función crea una variable de tipo HashMap, inicializa el arreglo de buckets con casillas nulas, inicializa el resto de variables y retorna el mapa. Inicialice el índice current a -1."""
 
 HashMap * createMap(long capacity) {
-//1.- Implemente la función createMap en el archivo hashmap.c. Esta función crea una variable de tipo HashMap, inicializa el arreglo de buckets con casillas nulas, inicializa el resto de variables y retorna el mapa. Inicialice el índice current a -1."""
     HashMap * map = (HashMap *)calloc(capacity, sizeof(HashMap));
     map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
     map->size = 0;

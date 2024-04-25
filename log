@@ -14,3 +14,17 @@ Thu 25 Apr 2024 12:56:49 AM UTC:
  tests:  1|5
 total_score: 10/70
 e2e2419
+Thu 25 Apr 2024 01:08:38 AM UTC: 
+ hashmap.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:54:40: error: expected ‘;’ before ‘}’ token
+   54 |         pos = (pos + 1) % map->capacity
+      |                                        ^
+      |                                        ;
+......
+   57 |       }
+      |       ~                                 
+Compilation failed
+a2e50ed
