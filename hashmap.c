@@ -56,6 +56,7 @@ void insertMap(HashMap * map, char * key, void * value) {
         if (pos == copia_i)
         {
           return;
+          //debería hacer enlarge!
         }
         
         //el % a capacity hace que nunca me salga de los valores del mapa
@@ -122,6 +123,7 @@ void eraseMap(HashMap * map,  char * key) {
 Pair * searchMap(HashMap * map,  char * key) {   
   long pos = hash(key, map->capacity);
   //si no es la que encontré con el hash entonces fue una coalición, busco lineal:
+  long copia_i = pos;
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
     {
       if (is_equal(key, map->buckets[pos]->key))
@@ -130,8 +132,11 @@ Pair * searchMap(HashMap * map,  char * key) {
         return map->buckets[pos];
       }
       pos = (pos + 1) % map->capacity;
+      if (copia_i == pos)
+      {
+        return NULL;
+      }
     }
-    return NULL;
 }
 
 Pair * firstMap(HashMap * map) {
