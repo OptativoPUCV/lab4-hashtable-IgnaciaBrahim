@@ -56,8 +56,8 @@ void insertMap(HashMap * map, char * key, void * value) {
         //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
       }
     map->buckets[pos] = createPair(key, value);
-    map->size++;
-    map->current = pos;
+    map->size++; //porque agregamos
+    map->current = pos; //pos actual
 }
 
 void enlarge(HashMap * map) {
@@ -87,9 +87,32 @@ void eraseMap(HashMap * map,  char * key) {
 
 }
 
+//3.- Implemente la función Pair * searchMap(HashMap * map, char * key), la cual retorna el Pair asociado a la clave ingresada. Recuerde que para buscar el par debe:
+
+//a - Usar la función hash para obtener la posición donde puede encontrarse el par con la clave
+
+//b - Si la clave no se encuentra avance hasta encontrarla (método de resolución de colisiones)
+
+//c - Si llega a una casilla nula, retorne NULL inmediatamente (no siga avanzando, la clave no está)
+
+//Recuerde actualizar el índice current a la posición encontrada. Recuerde que el arreglo es circular.
 Pair * searchMap(HashMap * map,  char * key) {   
-
-
+  long pos = hash(key, map->capacity);
+  /*if (is_equal(key, map->buckets[pos]->key))
+  {
+    map->current = pos;
+    return map->buckets[pos];
+  }*/
+  //si no es la que encontré con el hash entonces fue una coalición, busco lineal:
+  while(!is_equal(key, map->buckets[pos]->key) && map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
+    {
+      pos = (pos + 1) % map->capacity;
+      if (is_equal(key, map->buckets[pos]->key))
+      {
+        map->current = pos;
+        return map->buckets[pos];
+      }
+    }
     return NULL;
 }
 
