@@ -362,3 +362,8 @@ hashmap.c:85:8: error: unused variable ‘old_s’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 953469a
+Thu 25 Apr 2024 03:20:51 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+77da4bc
