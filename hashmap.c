@@ -159,15 +159,24 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  long pos = (map->current + 1) % map->capacity;
-  for (long i = map->current; i < map->capacity; i++)
+  if(map==NULL || map->current == -1) 
   {
-    if (map->buckets[pos] != NULL && map->buckets[pos] != NULL)
-    {
-        map->current = pos;
-        return map->buckets[pos];
-    }
-    pos++;
+    return NULL;
   }
-  return NULL;
+  long copia_i = map->current;
+  map->current = ((map->current) + 1) % map->capacity;
+  if (copia_i == map->current)
+  {
+    return NULL;
+  }
+
+  while(map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
+    {
+      map->current = ((map->current) + 1) % map->capacity;
+      if (copia_i == map->current)
+      {
+        return NULL;
+      }
+    }
+  return map->buckets[map->current];
 }
