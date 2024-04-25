@@ -58,9 +58,6 @@ void insertMap(HashMap * map, char * key, void * value) {
           return;
           //debería hacer enlarge!
         }
-        
-        //el % a capacity hace que nunca me salga de los valores del mapa
-        //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
       }
     map->buckets[pos] = createPair(key, value);
     map->size++; //porque agregamos
@@ -174,7 +171,7 @@ Pair * firstMap(HashMap * map) {
   long copia_i = 0;
   while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL)
     {
-      pos++;
+      pos = (pos + 1) % map->capacity;
       if (pos == copia_i)
       {
         return NULL;
