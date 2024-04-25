@@ -159,7 +159,6 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  long copia_i = map->current; //  pos inicial
   long pos = ((map->current) + 1) % map->capacity; // controlar que no se salga del mapa
   if(map==NULL || map->current == -1) 
   {

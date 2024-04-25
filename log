@@ -291,3 +291,8 @@ hashmap.c:162:8: error: unused variable ‘copia_i’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 53aad83
+Thu 25 Apr 2024 02:46:23 AM UTC: 
+ hashmap.c | 1 -
+ 1 file changed, 1 deletion(-)
+ tests:  0|0
+0bc97b0
