@@ -86,7 +86,7 @@ void enlarge(HashMap * map) {
   long old_c = map->capacity;
   Pair** old_a = map->buckets;
   createMap(old_c * 2);
-  for(int i = 0; i < old_s; i++)
+  for(int i = 0; i < old_c; i++)
     {
       insertMap(map, old_a[i]->key, old_a[i]->value);
     }
