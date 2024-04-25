@@ -172,3 +172,23 @@ Thu 25 Apr 2024 02:15:35 AM UTC:
  tests:  15|2
 total_score: 50/70
 8eb7b76
+Thu 25 Apr 2024 02:18:38 AM UTC: 
+ hashmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:167:38: error: expected ‘;’ before ‘while’
+  167 |   map->current = ((map->current) + 1)
+      |                                      ^
+      |                                      ;
+  168 |   while(map->current + 1 >= map->capacity && map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
+      |   ~~~~~                               
+hashmap.c:166:8: error: unused variable ‘copia_i’ [-Werror=unused-variable]
+  166 |   long copia_i = map->current;
+      |        ^~~~~~~
+hashmap.c:177:1: error: control reaches end of non-void function [-Werror=return-type]
+  177 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+9b4c8dc
