@@ -98,20 +98,15 @@ void eraseMap(HashMap * map,  char * key) {
 //Recuerde actualizar el índice current a la posición encontrada. Recuerde que el arreglo es circular.
 Pair * searchMap(HashMap * map,  char * key) {   
   long pos = hash(key, map->capacity);
-  if (is_equal(key, map->buckets[pos]->key))
-  {
-    map->current = pos;
-    return map->buckets[pos];
-  }
   //si no es la que encontré con el hash entonces fue una coalición, busco lineal:
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
     {
-      pos = (pos + 1) % map->capacity;
       if (is_equal(key, map->buckets[pos]->key))
       {
         map->current = pos;
         return map->buckets[pos];
       }
+      pos = (pos + 1) % map->capacity;
     }
     return NULL;
 }
