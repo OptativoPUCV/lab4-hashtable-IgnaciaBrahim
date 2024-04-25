@@ -56,6 +56,8 @@ void insertMap(HashMap * map, char * key, void * value) {
         //me llama la atencion que enlarge no esté antes de esto, debería utilizarse :) pq si no se podría hacer un while infinito??
       }
     map->buckets[pos] = createPair(key, value);
+    map->size++;
+    map->current = pos;
 }
 
 void enlarge(HashMap * map) {
