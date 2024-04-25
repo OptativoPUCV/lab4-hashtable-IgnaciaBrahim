@@ -168,17 +168,16 @@ Pair * searchMap(HashMap * map,  char * key) {
 Pair * firstMap(HashMap * map) {
   if(map==NULL) return NULL;
   long pos = 0;
-  long copia_i = 0;
-  while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL)
+  while(pos < map->capacity)
     {
-      pos = (pos + 1) % map->capacity;
-      if (pos == copia_i)
+      if (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
       {
-        return NULL;
+          map->current = pos;
+          return map->buckets[pos];
       }
+      pos++;
     }
-    map->current = pos;
-    return map->buckets[pos];
+  return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
