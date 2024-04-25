@@ -165,7 +165,7 @@ Pair * nextMap(HashMap * map) {
   }
   long copia_i = map->current;
   map->current = ((map->current) + 1) % map->capacity;
-  while(map->buckets[map->current] == NULL && map->buckets[map->current]->key == NULL)
+  while(map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
     {
       map->current = ((map->current) + 1) % map->capacity;
       if (copia_i == map->current)
