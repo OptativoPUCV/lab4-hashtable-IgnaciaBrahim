@@ -83,7 +83,7 @@ e - Inserte los elementos del arreglo old_buckets en el mapa (use la función in
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
   long old_c = map->capacity;
-  Pair** old_a = map->buckets;
+  Pair** old_b = map->buckets;
 
   map->capacity = map->capacity * 2;
   map->size = 0;
@@ -92,7 +92,10 @@ void enlarge(HashMap * map) {
   
   for(int i = 0; i < old_c; i++)
     {
-      insertMap(map, old_a[i]->key, old_a[i]->value);
+      if (old_b[i])
+      {
+        insertMap(map, old_b[i]->key, old_b[i]->value);
+      }
     }
 }
 
