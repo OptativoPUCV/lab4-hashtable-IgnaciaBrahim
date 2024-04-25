@@ -113,6 +113,11 @@ Pair * searchMap(HashMap * map,  char * key) {
         return map->buckets[pos];
       }
     }
+    if (is_equal(key, map->buckets[pos]->key))
+    {
+      map->current = pos;  
+      return map->buckets[pos];
+    }
     return NULL;
 }
 
