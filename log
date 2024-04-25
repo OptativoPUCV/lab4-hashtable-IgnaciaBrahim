@@ -192,3 +192,14 @@ hashmap.c:177:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 9b4c8dc
+Thu 25 Apr 2024 02:18:57 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:168:43: error: suggest parentheses around ‘&&’ within ‘||’ [-Werror=parentheses]
+  168 |   while(map->current + 1 >= map->capacity && map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
+      |                                           ^
+cc1: all warnings being treated as errors
+Compilation failed
+3bb64f2
