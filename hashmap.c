@@ -82,11 +82,25 @@ HashMap * createMap(long capacity) {
     return map;
 }
 
+//================================================
+//4.- Implemente la función void eraseMap(HashMap * map, char * key). Está función elimina el dato correspondiente a la clave key. Para hacerlo debe buscar el dato y luego marcarlo para que no sea válido. No elimine el par, sólo invalídelo asignando NULL a la clave (pair->key=NULL). Recuerde actualizar la variable size.
 void eraseMap(HashMap * map,  char * key) {    
-
+  if(map==NULL || key==NULL) return;
+  long pos = hash(key, map->capacity);
+  while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
+    {
+      if(is_equal(map->buckets[pos]->key, key))
+      {
+        map->buckets[pos]->key = NULL;
+        map->size--;
+      }
+      pos = (pos) + 1 % map->capacity;
+    }
+  return;
 
 }
 
+//================================================
 //3.- Implemente la función Pair * searchMap(HashMap * map, char * key), la cual retorna el Pair asociado a la clave ingresada. Recuerde que para buscar el par debe:
 
 //a - Usar la función hash para obtener la posición donde puede encontrarse el par con la clave
