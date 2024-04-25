@@ -163,20 +163,16 @@ Pair * nextMap(HashMap * map) {
   {
     return NULL;
   }
-  long copia_i = map->current;
-  map->current = ((map->current) + 1) % map->capacity;
-  if (copia_i == map->current)
-  {
-    return NULL;
-  }
+  long copia_i = map->current; //  pos inicial
+  long pos = ((map->current) + 1) % map->capacity; // controlar que no se salga del mapa
 
-  while(map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL)
+  while(map->buckets[pos] == NULL && map->buckets[pos]->key == NULL)
     {
-      map->current = ((map->current) + 1) % map->capacity;
       if (copia_i == map->current)
       {
         return NULL;
       }
+      map->current = ((map->current) + 1) % map->capacity;
     }
   return map->buckets[map->current];
 }
